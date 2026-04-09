@@ -7,12 +7,22 @@
     "start": "node Main.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Yossi Batash",
   "license": "ISC",
   "type": "module",
   "types": "/types/Connection.d.ts",
   "dependencies": {
-    "google-auth-library": "^10.6.1",
-    "google-spreadsheet": "^5.2.0"
+    "googleapis": "^171.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Yossi-Batash/google-sheets.js.git",
+    "bugs": {
+      "url": "https://github.com/Yossi-Batash/google-sheets.js/issues"
+    },
+    "homepage": "https://github.com/Yossi-Batash/google-sheets.js#readme"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   }
 }
