@@ -4,7 +4,7 @@
   "description": "An package that uses google-spreadsheet and google-auth-library to make it like a database",
   "main": "Main.js",
   "scripts": {
-    "start": "node Main.js"
+    "test": "node use.js"
   },
   "keywords": [],
   "author": "Yossi Batash",
