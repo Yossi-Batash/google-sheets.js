@@ -2,15 +2,18 @@
   "name": "google-sheets.js",
   "version": "1.0.0",
   "description": "An package that uses google-spreadsheet and google-auth-library to make it like a database",
-  "main": "Main.js",
+  "main": "dist/Main.js",
+  "types": "dist/Main.d.ts",
+  "type": "module",
   "scripts": {
-    "test": "node use.js"
+    "test": "tsx Use.ts",
+    "dev": "tsx watch Use.ts",
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [],
   "author": "Yossi Batash",
   "license": "ISC",
-  "type": "module",
-  "types": "/types/Connection.d.ts",
   "dependencies": {
     "googleapis": "^171.4.0"
   },
@@ -24,5 +27,10 @@
   },
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.2",
+    "tsx": "^4.21.0",
+    "typescript": "^6.0.2"
   }
 }

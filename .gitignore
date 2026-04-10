@@ -1,0 +1,4 @@
+node_modules
+creds.json
+start.bat
+.npmignore
