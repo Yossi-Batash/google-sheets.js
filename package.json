@@ -25,9 +25,6 @@
     },
     "homepage": "https://github.com/Yossi-Batash/google-sheets.js#readme"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "devDependencies": {
     "@types/node": "^25.5.2",
     "tsx": "^4.21.0",

@@ -1,5 +1,4 @@
 import { SheetsDB } from "./Main.js";
-// הערה לגבי השורה הזו למטה
 import creds from "./creds.json" with { type: "json" };
 const usersDB = new SheetsDB({
     credentials: { clientEmail: creds.client_email, privateKey: creds.private_key },

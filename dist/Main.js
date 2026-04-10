@@ -11,13 +11,13 @@ export class SheetsDB {
         if (!options || !options.credentials || !options.credentials.privateKey || !options.sheetName || !options.spreadsheetId || !options.schema) {
             throw new Error('Missing required options. Required: credentials.clientEmail, credentials.privateKey, sheetName, spreadsheetId, schema');
         }
-        this.spreadsheetId = options.spreadsheetId;
-        this.sheetName = options.sheetName;
         this.connection = new google.auth.JWT({
             email: options.credentials.clientEmail,
             key: options.credentials.privateKey,
             scopes: ["https://www.googleapis.com/auth/spreadsheets"],
         });
+        this.spreadsheetId = options.spreadsheetId;
+        this.sheetName = options.sheetName;
         this.schema = options.schema;
         this.sheets = google.sheets({ version: 'v4', auth: this.connection });
     }
@@ -29,24 +29,27 @@ export class SheetsDB {
         try {
             const response = await this.sheets.spreadsheets.get({ spreadsheetId: this.spreadsheetId });
             const sheets = response.data.sheets || [];
-            if (sheets.some((sheet) => sheet.properties?.title === this.sheetName)) {
-                return false;
-            }
-            await this.sheets.spreadsheets.batchUpdate({
-                spreadsheetId: this.spreadsheetId,
-                requestBody: {
-                    requests: [
-                        {
-                            addSheet: {
-                                properties: {
-                                    title: this.sheetName,
+            if (!sheets.some((sheet) => sheet.properties?.title === this.sheetName)) {
+                await this.sheets.spreadsheets.batchUpdate({
+                    spreadsheetId: this.spreadsheetId,
+                    requestBody: {
+                        requests: [
+                            {
+                                addSheet: {
+                                    properties: {
+                                        title: this.sheetName,
+                                    },
                                 },
                             },
-                        },
-                    ],
-                },
-            });
-            if (this.schema.length > 0) {
+                        ],
+                    },
+                });
+            }
+            const headers = (await this.sheets.spreadsheets.values.get({
+                spreadsheetId: this.spreadsheetId,
+                range: `${this.sheetName}!A1:Z1`
+            })).data.values?.[0] || [];
+            if (this.schema.length > 0 && !this.schema.every(header => headers.includes(header))) {
                 await this.sheets.spreadsheets.values.update({
                     spreadsheetId: this.spreadsheetId,
                     range: `${this.sheetName}!A1`,
