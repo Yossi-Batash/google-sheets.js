@@ -1,4 +1,5 @@
 node_modules
 creds.json
 push.bat
+Use.ts
 .npmignore
