@@ -1,7 +1,7 @@
 {
-  "name": "google-sheets.js",
+  "name": "gsheets-db.js",
   "version": "1.0.0",
-  "description": "An package that uses google-spreadsheet and google-auth-library to make it like a database",
+  "description": "An package that uses works with Google API that uses Google Sheets like a database (not official Google)",
   "main": "dist/Main.js",
   "types": "dist/Main.d.ts",
   "type": "module",
@@ -19,11 +19,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Yossi-Batash/google-sheets.js.git",
+    "url": "git+https://github.com/Yossi-Batash/google-sheets.db.git",
     "bugs": {
-      "url": "https://github.com/Yossi-Batash/google-sheets.js/issues"
+      "url": "https://github.com/Yossi-Batash/google-sheets.db/issues"
     },
-    "homepage": "https://github.com/Yossi-Batash/google-sheets.js#readme"
+    "homepage": "https://github.com/Yossi-Batash/google-sheets.db#readme"
   },
   "devDependencies": {
     "@types/node": "^25.5.2",
