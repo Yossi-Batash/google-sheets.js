@@ -9,6 +9,7 @@
     "test": "tsx Use.ts",
     "dev": "tsx watch Use.ts",
     "build": "tsc",
+    "build-docs": "typedoc --entryPointStrategy expand ./src --out docs",
     "prepublishOnly": "npm run build"
   },
   "keywords": [],
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@types/node": "^25.5.2",
     "tsx": "^4.21.0",
+    "typedoc": "^0.28.18",
     "typescript": "^6.0.2"
   }
 }
