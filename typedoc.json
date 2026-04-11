@@ -1,0 +1,10 @@
+{
+  "entryPoints": ["./Main.ts"],
+  "out": "docs",
+  "name": "gsheets-db.js",
+  "includeVersion": true,
+  "excludePrivate": true,
+  "theme": "default",
+  "hideGenerator": true,
+  "readme": "./README.md"
+}
