@@ -9,7 +9,7 @@
     "test": "tsx Use.ts",
     "dev": "tsx watch Use.ts",
     "build": "tsc",
-    "build-docs": "typedoc --entryPointStrategy expand ./src --out docs",
+    "build-docs": "typedoc --entryPointStrategy expand ./ --out docs",
     "prepublishOnly": "npm run build"
   },
   "keywords": [],
