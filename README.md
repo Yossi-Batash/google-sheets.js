@@ -1,4 +1,4 @@
-# google-sheets.js
+# gsheets-db.js
 
 ![NPM Version](https://img.shields.io/npm/v/gsheets-db.js?style=flat-square)
 ![License](https://img.shields.io/npm/l/gsheets-db.js?style=flat-square)

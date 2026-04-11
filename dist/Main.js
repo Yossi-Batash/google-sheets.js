@@ -33,7 +33,7 @@ export class SheetsDB {
     /**
      * Bootstraps the database connection.
      * Ensures that the target sheet and schema headers exist before proceeding.
-     * * @returns The initialized instance of SheetsDB.
+     * @returns The initialized instance of SheetsDB.
      */
     async init() {
         await this.ensureTableExists();
@@ -42,7 +42,7 @@ export class SheetsDB {
     /**
      * Verifies if the target sheet exists and creates it if not.
      * It also verifies and applies the schema headers to the first row if missing.
-     * * @returns A promise that resolves to true once the table is ready.
+     * @returns A promise that resolves to true once the table is ready.
      * @throws Will throw an error if the API request fails.
      */
     async ensureTableExists() {
@@ -88,7 +88,7 @@ export class SheetsDB {
     /**
      * Retrieves all rows from the sheet and maps them to an array of objects
      * using the first row as the keys.
-     * * @returns A promise that resolves to an array of key-value records.
+     * @returns A promise that resolves to an array of key-value records.
      * @throws Will throw an error if the API request fails.
      */
     async getAll() {

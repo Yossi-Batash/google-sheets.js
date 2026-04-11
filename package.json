@@ -1,6 +1,6 @@
 {
   "name": "gsheets-db.js",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": "A lightweight and fast wrapper for using Google Sheets as a database (Not offical with Google!).",
   "main": "dist/Main.js",
   "types": "dist/Main.d.ts",
@@ -12,7 +12,7 @@
     "build-docs": "typedoc --entryPointStrategy expand ./Main.ts --out docs",
     "prepublishOnly": "npm run build"
   },
-  "keywords": [],
+  "keywords": ["google-sheets", "gsheets-database", "google-sheets-database"],
   "author": "Yossi Batash",
   "license": "ISC",
   "dependencies": {
@@ -20,11 +20,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Yossi-Batash/google-sheets.db.git",
+    "url": "git+https://github.com/Yossi-Batash/gsheets-db.js.git",
     "bugs": {
-      "url": "https://github.com/Yossi-Batash/google-sheets.db/issues"
+      "url": "https://github.com/Yossi-Batash/gsheets-db.js/issues"
     },
-    "homepage": "https://github.com/Yossi-Batash/google-sheets.db#readme"
+    "homepage": "https://github.com/Yossi-Batash/gsheets-db.js#readme"
   },
   "devDependencies": {
     "@types/node": "^25.5.2",
