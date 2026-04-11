@@ -24,7 +24,6 @@ const config: Config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'Yossi-Batash', // Usually your GitHub org/user name.
   projectName: 'google-sheets.db', // Usually your repo name.
-  trailingsSlash: false,
   onBrokenLinks: 'throw',
 
   // Even if you don't use internationalization, you can use this field to set
