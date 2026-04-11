@@ -1,11 +1,20 @@
 import { google } from 'googleapis';
+/**
+ * Create a new table in the spreadsheet.
+ */
 export class SheetsDB {
+    /** The current database configuration options. */
     config;
     spreadsheetId;
     sheetName;
     connection;
     sheets;
     schema;
+    /**
+     * Initializes a new instance of the SheetsDB class and sets up the Google auth client.
+     * * @param options - The database configuration options.
+     * @throws Will throw an error if any required option is missing.
+     */
     constructor(options) {
         this.config = options;
         if (!options || !options.credentials || !options.credentials.privateKey || !options.sheetName || !options.spreadsheetId || !options.schema) {
@@ -21,10 +30,21 @@ export class SheetsDB {
         this.schema = options.schema;
         this.sheets = google.sheets({ version: 'v4', auth: this.connection });
     }
+    /**
+     * Bootstraps the database connection.
+     * Ensures that the target sheet and schema headers exist before proceeding.
+     * * @returns The initialized instance of SheetsDB.
+     */
     async init() {
         await this.ensureTableExists();
         return this;
     }
+    /**
+     * Verifies if the target sheet exists and creates it if not.
+     * It also verifies and applies the schema headers to the first row if missing.
+     * * @returns A promise that resolves to true once the table is ready.
+     * @throws Will throw an error if the API request fails.
+     */
     async ensureTableExists() {
         try {
             const response = await this.sheets.spreadsheets.get({ spreadsheetId: this.spreadsheetId });
@@ -65,6 +85,12 @@ export class SheetsDB {
             throw new Error(`Failed ensureTableExists: ${err}`);
         }
     }
+    /**
+     * Retrieves all rows from the sheet and maps them to an array of objects
+     * using the first row as the keys.
+     * * @returns A promise that resolves to an array of key-value records.
+     * @throws Will throw an error if the API request fails.
+     */
     async getAll() {
         try {
             const response = await this.sheets.spreadsheets.values.get({

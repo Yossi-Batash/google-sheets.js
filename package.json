@@ -1,7 +1,7 @@
 {
   "name": "gsheets-db.js",
-  "version": "1.0.0",
-  "description": "An package that uses works with Google API that uses Google Sheets like a database (not official Google)",
+  "version": "1.0.1",
+  "description": "A lightweight and fast wrapper for using Google Sheets as a database (Not offical with Google!).",
   "main": "dist/Main.js",
   "types": "dist/Main.d.ts",
   "type": "module",

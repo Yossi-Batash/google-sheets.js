@@ -1,26 +1,50 @@
 import { google, sheets_v4 } from 'googleapis';
 import { JWT } from 'google-auth-library';
 
+/**
+ * Credentials for the Google Cloud Service Account.
+ */
 export interface ConnectionCredentials {
+    /** The service account client email.
+     * The spreadsheet must be shared to this email with **"Edit"** permission!
+     */
     clientEmail: string;
+    /** The service account private key. */
     privateKey: string;
 }
 
+/**
+ * Configuration options for initializing the Google Sheets database.
+ */
 export interface DBOptions {
+    /** Authentication credentials. */
     credentials: ConnectionCredentials;
+    /** The ID of the Google Spreadsheet (can be found in the URL). */
     spreadsheetId: string;
+    /** The name of the specific sheet to use. Will create a new one if not exist.. */
     sheetName: string;
+    /** An array of strings representing the column headers. */
     schema: string[];
 }
 
+/**
+ * Create a new table in the spreadsheet.
+ */
 export class SheetsDB {
+    /** The current database configuration options. */
     public config: DBOptions;
+    
     private spreadsheetId: string;
     private sheetName: string;
     private connection: JWT;
     private sheets: sheets_v4.Sheets;
     private schema: string[];
 
+    /**
+     * Initializes a new instance of the SheetsDB class and sets up the Google auth client.
+     * * @param options - The database configuration options.
+     * @throws Will throw an error if any required option is missing.
+     */
     constructor(options: DBOptions) {
         this.config = options;
 
@@ -40,11 +64,22 @@ export class SheetsDB {
         this.sheets = google.sheets({ version: 'v4', auth: this.connection });
     }
 
+    /**
+     * Bootstraps the database connection.
+     * Ensures that the target sheet and schema headers exist before proceeding.
+     * * @returns The initialized instance of SheetsDB.
+     */
     public async init(): Promise<this> {
         await this.ensureTableExists();
         return this;
     }
 
+    /**
+     * Verifies if the target sheet exists and creates it if not.
+     * It also verifies and applies the schema headers to the first row if missing.
+     * * @returns A promise that resolves to true once the table is ready.
+     * @throws Will throw an error if the API request fails.
+     */
     public async ensureTableExists(): Promise<boolean> {
         try {
             const response = await this.sheets.spreadsheets.get({ spreadsheetId: this.spreadsheetId });
@@ -88,6 +123,12 @@ export class SheetsDB {
         }
     }
 
+    /**
+     * Retrieves all rows from the sheet and maps them to an array of objects
+     * using the first row as the keys.
+     * * @returns A promise that resolves to an array of key-value records.
+     * @throws Will throw an error if the API request fails.
+     */
     public async getAll(): Promise<Record<string, any>[]> {
         try {
             const response = await this.sheets.spreadsheets.values.get({
