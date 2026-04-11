@@ -1,4 +1,4 @@
-# 📊 google-sheets.js
+# google-sheets.js
 
 ![NPM Version](https://img.shields.io/npm/v/gsheets-db.js?style=flat-square)
 ![License](https://img.shields.io/npm/l/gsheets-db.js?style=flat-square)
@@ -6,7 +6,7 @@
 
 **gsheets-db.js** is a lightweight and fast wrapper for using Google Sheets as a database in your Node.js projects. Built with TypeScript for maximum type-safety and full Intellisense support (Not official Google NPM package!).
 
-## 📦 Installation
+## Installation
 
 You can install the library via NPM:
 
@@ -16,7 +16,7 @@ npm install gsheets-db.js
 
 ---
 
-## 🛠 Initial Setup
+## Initial Setup
 
 Before using the library, ensure you have a `creds.json` file from a Google Cloud Service Account.
 
@@ -59,7 +59,7 @@ The full documentation is available at:
 
 ---
 
-## 📜 License
+## License
 
 Distributed under the **ISC** License. See `LICENSE` for more information.
 
