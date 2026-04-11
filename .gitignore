@@ -1,4 +1,4 @@
 node_modules
 creds.json
-start.bat
+push.bat
 .npmignore
